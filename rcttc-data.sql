@@ -126,6 +126,15 @@ customer_id = 44 or
 customer_id = 52 or
 customer_id = 74;
 
+
+
+delete from tickets
+where ticket_id between 532 and 537;
+
+
+
+
+
 delete from customers
 where customer_id = 65;
 
