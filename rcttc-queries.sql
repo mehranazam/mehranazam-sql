@@ -78,3 +78,41 @@ inner join showings sh on sh.show_id = t.show_id
 inner join plays p on p.play_id = sh.play_id
 inner join theaters th on th.theater_id = sh.theater_id;
 
+
+-- Need help with this one!
+select 
+c.customer_first,
+c.customer_last,
+count(*)
+from customers c
+inner join tickets t on t.customer_id = c.customer_id
+group by c.customer_first, c.customer_last;
+
+select
+sum(t.ticket_price),
+p.play_name
+from tickets t
+inner join showings sh on sh.show_id = t.show_id
+inner join plays p on p.play_id = sh.show_id
+group by p.play_name;
+
+select
+sum(t.ticket_price),
+th.theater_name
+from tickets t
+inner join showings sh on sh.show_id = t.show_id
+inner join theaters th on th.theater_id = sh.theater_id
+group by th.theater_name;
+
+
+
+
+select
+sum(t.ticket_price) as sum_price,
+c.customer_last,
+c.customer_first
+from customers c
+inner join tickets t on t.customer_id = c.customer_id
+group by c.customer_id
+order by sum_price desc
+limit 1;
